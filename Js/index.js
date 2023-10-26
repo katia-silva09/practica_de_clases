@@ -1,47 +1,48 @@
-const listaSuper = document.getElementByIdC ("lista-super" ) ;
-const input = document.getE1enentById(" input—tista");
-const botonAgregar = document.getElementById ("boton-agegar");
+const listaSuper = document.getElementById("lista-super");
+const input = document.getElementById("input-lista");
+const botonAgregar = document.getElementById("boton-agregar");
 
-botonAgregar.addEventListener("click", onClickAdd) ;
-input.addEventListener("input", onTypeList) ;
+botonAgregar.addEventListener("click", onClickAdd);
+input.addEventListener("input", onTypeList);
 
-function onCtickAdd() {
-    const li = createListItem( input.value) ;
-    listaSuper.appendChild ( li) ;
-    input. value= "";
+function onClickAdd() {
+    const li = createListItem(input.value);
+    listaSuper.appendChild(li);
+    input.value = "";
     botonAgregar.disabled = true;
-}
-    function onTypeList() {
-    botonAgregar.disabled = input. value.length==0;
+    guardar();
 }
 
-function guardar(){
-    Swat.fire({
-    position: 'top—end' ,
-    icon: 'success',
-    title: 'Producto Agregado Con Éxito' ,
-    shovConfirmButton: false,
-    timer: 1500
-    })
+function onTypeList() {
+    botonAgregar.disabled = input.value.length === 0;
 }
 
-function createListIten(name) {
-    const listItem = document.createElement (" li") ;
-    const heading = document.createElement ("span")
-    heading. textContent = name ;
-    const botonEliminar= document.createElement ("button");
+function guardar() {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Producto Agregado Con Éxito',
+        showConfirmButton: false,
+        timer: 1500
+    });
+}
 
-    listItem.classList.add("list-item");
+function createListItem(name) {
+    const listItem = document.createElement("li");
+    const heading = document.createElement("span");
+    heading.textContent = name;
+    const botonEliminar = document.createElement("button");
+
+    listItem.classList.add("lista-item");
     botonEliminar.textContent = "X";
-    botonEliminar.id = "boton—elininar" ;
-    botonEliminar.addEventListener("click",onClickDelete) ;
+    botonEliminar.id = "boton-eliminar";
+    botonEliminar.addEventListener("click", onClickDelete);
 
-    listItem.appendChitd ( heading ) ;
-    listItem.appendChitd ( botonEliminar) ;
+    listItem.appendChild(heading);
+    listItem.appendChild(botonEliminar);
     return listItem;
 }
 
-function onClickDelete(){
+function onClickDelete() {
     this.parentNode.remove();
 }
-
